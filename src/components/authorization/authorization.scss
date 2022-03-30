@@ -1,0 +1,91 @@
+.auth-panel-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .navbar-name {
+    font-family: "Neucha";
+    font-weight: bold;
+    color: #bd0606;
+    letter-spacing: 1px;
+  }
+}
+
+.auth-form {
+  padding: 20px 40px;
+  text-align: start;
+}
+
+.auth__warn {
+  color: red;
+  visibility: hidden;
+}
+.auth__warn.show {
+  visibility: visible;
+}
+
+.auth {
+
+  &__title {
+    font-size: 1.7em;
+    font-weight: bold;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+  }
+
+  input {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  &__input-field {
+    padding: 7px;
+    font-size: 0.8em;
+    color: $color-text-modal;
+    border-radius: 7px;
+    border: 2px solid #3a2c2481;
+    outline: none;
+  }
+
+  &__input-field:hover,
+  &__input-field:focus {
+    border-color: $color-text-modal;
+    box-shadow: 0px 5px 8px 2px rgba(0, 0, 0, 0.2);
+
+  }
+
+  &__toggle {
+    background-color: transparent;
+    font: inherit;
+    border: none;
+    outline: none;
+    text-decoration: underline;
+    color: #3d0505;
+  }
+
+  &__toggle:hover {
+    color: #bd0606;
+  }
+
+  input[type=submit] {
+    margin-top: 20px;
+    font: inherit;
+    line-height: 35px;
+    color: $color-second;
+    background-color: #3d0505;
+    border-radius: 7px;
+    border: 2px solid $color-second;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: $color-second;
+    color: $color-text-modal;
+    border-color: #3d0505;
+    box-shadow: 0px 5px 8px 2px rgba(0, 0, 0, 0.2);
+  }
+}
+

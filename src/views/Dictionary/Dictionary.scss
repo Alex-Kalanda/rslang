@@ -1,0 +1,540 @@
+.dictionary-page {
+  padding-bottom: 30px;
+}
+
+i {
+  font-style: italic;
+}
+
+b {
+  font-weight: bold;
+}
+
+.page-title,
+.words-title,
+.game-links__title {
+  padding: 20px 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+// Chapters
+
+.chapter-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
+  gap: 20px;
+
+  input {
+    display: none;
+  }
+
+  label:hover {
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  input:checked + label {
+    color: white;
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.chapter-label {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #dad1c9;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.chapter-words-nums {
+  font-size: 10px;
+  transition: none;
+}
+
+// Word card
+
+.dictionary-words-container {
+  margin-bottom: 30px;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 0px 5px 8px 2px rgba(0, 0, 0, 0.2);
+
+  &::after {
+    display: none;
+    position: absolute;
+    content: '';
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    background: url('../../assets/svg/head.svg') no-repeat center center;
+    background-size: contain;
+  }
+
+  @media (max-width: 410px) {
+    .card::after {
+      bottom: 70px;
+    }
+  }
+
+  &.hard::after {
+    display: block;
+    background-image: url('../../assets/svg/head-red.svg');
+  }
+  &.learned::after {
+    display: block;
+    background-image: url('../../assets/svg/head-green.svg');
+  }
+
+  &__new-marker::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 69px;
+    height: 69px;
+    background-image: url('../../assets/svg/rectangle.svg');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    transform: rotate(270deg);
+  }
+
+  &__new-text {
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: normal;
+    text-transform: lowercase;
+    color: $color-second;
+    transform: rotate(-45deg);
+  }
+
+  &__left-side {
+    width: 100%;
+    min-height: 231px;
+  }
+
+  @media (max-width: 410px) {
+    .card__left-side {
+      min-height: auto;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  &__word {
+    width: max-content;
+    margin: 0;
+    font-size: 1.7em;
+    color: $color-special;
+    font-weight: bold;
+  }
+
+  &__transcription {
+    font-size: 1.1em;
+  }
+
+  &__translate {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+
+  &__subheading {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+
+  &__btns-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3em;
+  }
+
+  @media (max-width: 900px) {
+    .card__btns-container {
+      position: static;
+      margin: 15px 0 5px;
+      width: min-content;
+    }
+  }
+
+  @media (max-width: 410px) {
+    .card__btns-container {
+      width: 100%;
+      font-size: 1.1em;
+    }
+  }
+
+  &__voice-btn {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.1s;
+    border: 2px solid $color-second;
+  }
+
+  &__voice-icon {
+    width: 75%;
+    vertical-align: middle;
+  }
+
+  &__btn {
+    padding: 0 8px;
+    color: $color-second;
+    font-size: 1em;
+    border-radius: 16px;
+    position: relative;
+    line-height: 30px;
+    cursor: pointer;
+    border: 2px solid $color-second;
+  }
+
+  &__voice-btn:hover,
+  &__btn:hover {
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  &__voice-btn:active,
+  &__btn:active {
+    transform: scale(1.1);
+  }
+
+  th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-right: 25px;
+    font-weight: bold;
+  }
+
+  td {
+    padding-right: 15px;
+  }
+
+  &__right-answer {
+    color: green;
+  }
+  &__wrong-answer {
+    color: red;
+  }
+
+  td span {
+    color: $color-main;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    display: block;
+  }
+}
+
+
+// Wold list
+
+.word-list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+
+  &_hard::after,
+  &_learned::after {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10rem;
+    transform: rotate(-10deg);
+  }
+  &_hard::after {
+    content: 'difficult';
+    color: $color-special;
+    opacity: 0.2;
+  }
+  &_learned::after {
+    content: 'learned';
+    color: $color-chapter-4;
+    opacity: 0.5;
+  }
+}
+
+.word-item {
+  position: relative;
+  z-index: 10;
+  width: 180px;
+  flex-grow: 1;
+  padding: 5px;
+  color: $color-main;
+  background-color: transparent;
+  border: 2px solid $color-second;
+  border-radius: 10px;
+
+  &:hover,
+  &_active {
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  h3 {
+    font-size: 20px;
+    transition: none;
+  }
+
+  p {
+    transition: none;
+  }
+
+  &::after {
+    display: none;
+    position: absolute;
+    content: '';
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: url('../../assets/svg/head.svg') no-repeat center center;
+    background-size: contain;
+  }
+
+  &_hard::after {
+    display: block;
+    background-image: url('../../assets/svg/head-red.svg');
+  }
+  &_learned::after {
+    display: block;
+    background-image: url('../../assets/svg/head-green.svg');
+  }
+  &_active {
+    color: $color-second;
+  }
+}
+
+.tui-pagination {
+  margin-bottom: 30px;
+}
+
+// Game links
+
+.game-links {
+
+  &__title {
+    padding-bottom: 10px;
+  }
+
+  &__description {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 520px) {
+  .game-links__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.game-item {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: inherit;
+  border: 2px solid $color-second;
+  border-radius: 15px;
+
+  &__title {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__feature {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    width: max-content;
+    color: $color-second;
+    font-weight: bold;
+    border-radius: 15px;
+  }
+}
+
+.game-item:hover {
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.game-item.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: default;
+}
+
+// Colors for chapters
+
+.color-chapter-0:hover {
+  background-color: $color-chapter-light-1;
+}
+.color-chapter-1:hover {
+  background-color: $color-chapter-light-2;
+}
+.color-chapter-2:hover {
+  background-color: $color-chapter-light-3;
+}
+.color-chapter-3:hover {
+  background-color: $color-chapter-light-4;
+}
+.color-chapter-4:hover {
+  background-color: $color-chapter-light-5;
+}
+.color-chapter-5:hover {
+  background-color: $color-chapter-light-6;
+}
+.color-chapter-6:hover {
+  background-color: $color-chapter-light-7;
+}
+
+input:checked + .color-chapter-0,
+.word-item_active.color-chapter-0,
+.card__btn.color-chapter-0,
+.card__voice-btn.color-chapter-0,
+.feature_color-chapter-0 {
+  background-color: $color-chapter-1;
+}
+input:checked + .color-chapter-1,
+.word-item_active.color-chapter-1,
+.card__btn.color-chapter-1,
+.card__voice-btn.color-chapter-1,
+.feature_color-chapter-1 {
+  background-color: $color-chapter-2;
+}
+input:checked + .color-chapter-2,
+.word-item_active.color-chapter-2,
+.card__btn.color-chapter-2,
+.card__voice-btn.color-chapter-2,
+.feature_color-chapter-2 {
+  background-color: $color-chapter-3;
+}
+input:checked + .color-chapter-3,
+.word-item_active.color-chapter-3,
+.card__btn.color-chapter-3,
+.card__voice-btn.color-chapter-3,
+.feature_color-chapter-3 {
+  background-color: $color-chapter-4;
+}
+input:checked + .color-chapter-4,
+.word-item_active.color-chapter-4,
+.card__btn.color-chapter-4,
+.card__voice-btn.color-chapter-4,
+.feature_color-chapter-4 {
+  background-color: $color-chapter-5;
+}
+input:checked + .color-chapter-5,
+.word-item_active.color-chapter-5,
+.card__btn.color-chapter-5,
+.card__voice-btn.color-chapter-5,
+.feature_color-chapter-5 {
+  background-color: $color-chapter-6;
+}
+input:checked + .color-chapter-6,
+.word-item_active.color-chapter-6,
+.card__btn.color-chapter-6,
+.card__voice-btn.color-chapter-6,
+.feature_color-chapter-6 {
+  background-color: $color-chapter-7;
+}
+
+.card__voice-btn.color-chapter-0:hover,
+.card__btn.color-chapter-0:hover {
+  border-color: $color-chapter-1;
+}
+.card__voice-btn.color-chapter-1:hover,
+.card__btn.color-chapter-1:hover {
+  border-color: $color-chapter-2;
+}
+.card__voice-btn.color-chapter-2:hover,
+.card__btn.color-chapter-2:hover {
+  border-color: $color-chapter-3;
+}
+.card__voice-btn.color-chapter-3:hover,
+.card__btn.color-chapter-3:hover {
+  border-color: $color-chapter-4;
+}
+.card__voice-btn.color-chapter-4:hover,
+.card__btn.color-chapter-4:hover {
+  border-color: $color-chapter-5;
+}
+.card__voice-btn.color-chapter-5:hover,
+.card__btn.color-chapter-5:hover {
+  border-color: $color-chapter-6;
+}
+.card__voice-btn.color-chapter-6:hover,
+.card__btn.color-chapter-6:hover {
+  border-color: $color-chapter-7;
+}
+
+// Фоновый градент для карточки слова в зависимости от активного раздела
+.card_chapter-0,
+.game-item_chapter-0 {
+  background: linear-gradient(180deg, #ffffff54, #fc775f94);
+}
+.card_chapter-1,
+.game-item_chapter-1 {
+  background: linear-gradient(180deg, #ffffff54, #fca65f94);
+}
+.card_chapter-2,
+.game-item_chapter-2 {
+  background: linear-gradient(180deg, #ffffff54, #fcdf5f94);
+}
+.card_chapter-3,
+.game-item_chapter-3 {
+  background: linear-gradient(180deg, #ffffff54, #b3fc5f94);
+}
+.card_chapter-4,
+.game-item_chapter-4 {
+  background: linear-gradient(180deg, #ffffff54, #4baec794);
+}
+.card_chapter-5,
+.game-item_chapter-5 {
+  background: linear-gradient(180deg, #ffffff54, #5fa8fc94);
+}
+.card_chapter-6,
+.game-item_chapter-6 {
+  background: linear-gradient(180deg, #ffffff54, #cf5ffc94);
+}
