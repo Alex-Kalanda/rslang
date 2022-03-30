@@ -1,0 +1,9 @@
+{
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 120,
+    "proseWrap": "never",
+    "max-len": ["error", 120, 2],
+    "endOfLine": "auto"
+}
